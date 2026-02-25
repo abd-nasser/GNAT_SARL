@@ -47,19 +47,29 @@ INSTALLED_APPS = [
     
     #personnel
     'directeur_app',
-    'chef_atelier',
+    'chef_atelier_app',
     'comptable_app',
     'laveur_app',
-    'mecanicien_app',
+    'mecanic_app',
     'peintre_app',
     'receptionniste_app',
     
     #clients, vehicules , reparations orders, and dashboard
     'client_app',
-    'vehicule_app',
+    'vehicul_app',
     'or_app',
     'dashboard_app',
+    
+    #other apps
+    "tailwind",
+    "theme"
 ]
+
+if DEBUG:
+    INSTALLED_APPS +=[
+        "django_browser_reload"
+    ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -70,6 +80,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+if DEBUG:
+    MIDDLEWARE +=[
+        "django_browser_reload.middleware.BrowserReloadMiddleware"
+    ]
 
 ROOT_URLCONF = 'gnat_sarl.urls'
 
@@ -120,6 +135,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = "auth_app.Personnel"
 
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/

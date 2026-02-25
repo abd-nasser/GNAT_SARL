@@ -1,3 +1,11 @@
 from django.contrib import admin
+from .models import Post, Personnel
 
-# Register your models here.
+@admin.register(Post)
+class AdminPost(admin.ModelAdmin):
+    list_display = ["name", "date_creation"]
+    
+
+@admin.register(Personnel)
+class AdminPersonnel(admin.ModelAdmin):
+    list_display = ["post","username", "first_name", "last_name", "phone", "email", ]
